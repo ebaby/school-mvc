@@ -1,0 +1,5 @@
+D:\WorkResource\EduProject\C#\school\Domain\bin\Release\Domain.dll
+D:\WorkResource\EduProject\C#\school\Domain\bin\Release\Domain.pdb
+D:\WorkResource\EduProject\C#\school\Domain\obj\Release\Domain.csprojResolveAssemblyReference.cache
+D:\WorkResource\EduProject\C#\school\Domain\obj\Release\Domain.dll
+D:\WorkResource\EduProject\C#\school\Domain\obj\Release\Domain.pdb

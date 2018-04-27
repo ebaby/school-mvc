@@ -1,0 +1,33 @@
+<div class="content-area block-template" style="background:#fff;padding: 0 0 30px; min-height: 660px;">
+ <div class="parents-banback">
+    <div class="head-photo">
+        <div class="head-back float-l">
+            <div>
+                <img src="img/a3.jpg" alt="Alternate Text" ng-src="{{userinfo.pic}}" />
+            </div>
+        </div>
+        <div class="float-l" style="line-height:120px;margin-left:15px;" ng-bind="userinfo.realname"> 
+            喵喵
+        </div>
+    </div>
+ </div>
+ <div>
+    <ul class=" class-navtabs " style="margin-top:50px !Important; border-bottom:1px solid #e0e0e0 !important;" >
+        <li class="" ng-class='{"class-navtabsact":vm.tabindex==0}'>
+            <a href="javascript:void(null)" data-toggle="tab" aria-expanded="true" ng-click="selectTab(0)">个人信息</a>
+        </li>
+        <li class="" ng-class='{"class-navtabsact":vm.tabindex==1}'>
+            <a href="javascript:void(null)" data-toggle="tab" aria-expanded="false" ng-click="selectTab(1)">购买记录</a>
+        </li>
+        <li class="" ng-class='{"class-navtabsact":vm.tabindex==2}'>
+            <a href="javascript:void(null)" data-toggle="tab" aria-expanded="false" ng-click="selectTab(2)">打印记录</a>
+        </li>
+            <div class="clear"></div>
+    </ul>
+     <div ui-view='userinfo'></div>
+ </div> 
+</div>
+
+<script type="text/javascript">
+    setMinheight();
+</script>

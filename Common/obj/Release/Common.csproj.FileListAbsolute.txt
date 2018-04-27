@@ -1,0 +1,13 @@
+D:\WorkResource\EduProject\C#\school\Common\bin\Release\Common.dll.config
+D:\WorkResource\EduProject\C#\school\Common\bin\Release\Common.dll
+D:\WorkResource\EduProject\C#\school\Common\bin\Release\Common.pdb
+D:\WorkResource\EduProject\C#\school\Common\bin\Release\Dapper.dll
+D:\WorkResource\EduProject\C#\school\Common\bin\Release\DapperExtensions.dll
+D:\WorkResource\EduProject\C#\school\Common\bin\Release\MySql.Data.dll
+D:\WorkResource\EduProject\C#\school\Common\bin\Release\Newtonsoft.Json.dll
+D:\WorkResource\EduProject\C#\school\Common\bin\Release\Dapper.xml
+D:\WorkResource\EduProject\C#\school\Common\bin\Release\DapperExtensions.pdb
+D:\WorkResource\EduProject\C#\school\Common\bin\Release\Newtonsoft.Json.xml
+D:\WorkResource\EduProject\C#\school\Common\obj\Release\Common.csprojResolveAssemblyReference.cache
+D:\WorkResource\EduProject\C#\school\Common\obj\Release\Common.dll
+D:\WorkResource\EduProject\C#\school\Common\obj\Release\Common.pdb

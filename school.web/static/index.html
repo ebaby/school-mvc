@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv="X-UA-Compatible" content="edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="/static/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/js/libs/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="/static/assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="/static/assets/layouts/layout5/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/pages/css/profile.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/js/comlibs/slidebox/jquery.slideBox.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="/static/css/style(3.0).css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/setup.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/bjgl.css" />
+
+    <script data-main="/static/js/config/school.config" src="/static/js/libs/require.js"></script>
+
+
+    <!-- END THEME LAYOUT STYLES -->
+</head>
+<!-- END HEAD -->
+<body id="layoutcontainer">
+    <div>
+        <div ui-view='header'  class="content-area clearfix" >
+
+        </div>
+
+        <!--<div style="min-height:40px;margin-top:60px !important;background:#0094ff;"></div>-->
+
+            <!-- END HEADER -->
+            <div class="content-area clearfix" style="min-height:500px;margin-top:-30px !important;">
+                <div id="sidebar" ui-view="sidebar">
+
+                </div>
+                <div ui-view=''>
+
+                </div>
+            </div>
+        </div>
+    <div class="back">
+        <img src="/static/images/body-back.png" alt="" />
+    </div>
+    <!--footer-->
+    <!--  <div class="foot" id="aboutfoot" style="display:none;">
+         <div class="foot-main">
+             <div class="foot-left">
+                 <a href="/about.html" target="_blank">关于我们</a> |   <a href="/addour.html" target="_blank">加入我们</a>  |  <a href="/contactour.html" target="_blank">联系我们</a>  |  <a href="/friendlinks.html" target="_blank">友情链接</a>
+             </div>
+             <div class="foot-right">2015—2018易全解（yqj.cn）京ICP备15055904号</div>
+             <div style="clear: both"></div>
+         </div>
+     </div> -->
+    <div class="foot1" id="aboutfoot">
+        <div class="float-l foot-left"><a href="/static/about.html" target="_blank">关于我们</a>  |  <a href="/static/addour.html" target="_blank">加入我们</a>  | <a href="/static/contactour.html" target="_blank"> 联系我们</a>  | <a href="/static/friendlinks.html" target="_blank"> 友情链接</a>  </div>
+        <div class="foot-left" style="float:right">2015-2018易全解（yqj.cn）京ICP备15055904号</div>
+        <div class="clear"></div>
+    </div>
+
+
+    <!--悬浮-->
+    <!--<div class="fixed" ui-view='menubar'></div>-->
+
+    <div class="all-loading"></div>
+    
+    <!-- END QUICK SIDEBAR -->
+    <!--[if lt IE 9]>
+    <script src="/assets/global/plugins/respond.min.js"></script>
+    <script src="/assets/global/plugins/excanvas.min.js"></script>
+    <![endif]-->
+    <!-- BEGIN CORE PLUGINS -->
+    <script src="/static/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/static/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="/static/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="/static/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="/static/js/comlibs/datepicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="/static/assets/global/scripts/app.min.js" type="text/javascript"></script>
+    <script src="/static/assets/layouts/layout5/scripts/layout.min.js" type="text/javascript"></script>
+    <script src="/static/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+    <script src="/static/js/comlibs/superslide.2.1.js" type="text/javascript"></script>
+    
+    
+    <script>
+        $(function () {
+            //$(".picBox").height($(window).height() - 62);
+            if (window.location.hash === '#/') {
+                window.location.href = "/static/index.html";
+            }
+        });
+        function closeMQ() {
+            $(".picBox").hide();
+        }
+    </script>
+    
+
+    <!-- END THEME LAYOUT SCRIPTS -->
+</body>
+
+</html>

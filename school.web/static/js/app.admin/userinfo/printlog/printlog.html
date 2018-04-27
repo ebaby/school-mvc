@@ -1,0 +1,42 @@
+<div ng-if="vm.printrecordlist.length>0">
+<div class="dyjl  block-graytemplate" style="padding:0;" ng-repeat="p in vm.printrecordlist"  ng-show="!p.disable">
+    <div class="dyjl-bj">
+        <div class=" float-l ctdy-left"><span ng-if="p.printtype==1">错题打印</span><span ng-if="p.printtype==2" >高频错题</span><span ng-if="p.printtype==3" >学情分析报告</span>记录</div>
+        <div class="float-r ctdy-rhgt" ng-click="deletePrintRecordDialog(p,$event)"></div>
+        <div class="float-r font-blue">打印日期：<span subt-time timevalue="p.printdate"></span></div>
+        <div class="clear"></div>
+    </div>
+    <div class="dyjl-list">
+        <ul>
+            <li ng-repeat="c in p.timu"> <span ng-bind="c.name">第二章：因数和倍数（1道题）</span></li>
+            <!--<li>第二章：因数和倍数因数和倍数因数和倍数（1道题）</li>
+            <li>第二章：因数和倍数因数和倍数（1道题）</li>
+            <li>第二章：因数和倍数因数和倍数因数和倍数因数和倍数（1道题）</li>-->
+            <div class="clear"></div>
+        </ul>
+        <div class="dyjl-dt"><span ng-bind="p.timu.length">20</span>道题  共<span>1</span>页</div>
+    </div>
+    
+</div>
+</div>
+<div no-data datalist="vm.printrecordlist">
+        <div class="kby dy-blank">
+        </div>
+    <div style="text-align:center;"> 暂时没有打印记录~</div>
+    </div>
+<!--<div class="dyjl block-graytemplate" style="padding:0;">
+    <div class="dyjl-bj">
+        <div class=" float-l ctdy-left">学情打印记录</div>
+        <div class="float-r ctdy-rhgt"></div>
+        <div class="float-r font-blue">打印日期：2016-06－12</div>
+        
+        <div class="clear"></div>
+    </div>
+    <div class="dyjl-list">
+        <ul>
+            <li>张的学情分析报告</li>
+            <div class="clear"></div>
+        </ul>
+        <div class="dyjl-dt">时间段：<span>2016-2-23</span>到 <span class="i-marginr">2016-3-06</span>    共<span>12</span>页</div>
+    </div>
+</div>-->

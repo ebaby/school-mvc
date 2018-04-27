@@ -1,0 +1,80 @@
+﻿<div class="main">
+    <div class="bd pd20">
+        <div class="head_h">
+            <h1>
+                <span id="title">文章分类设置</span>
+            </h1>
+        </div>
+         <div style="margin:0 0 20px 10px;">
+            
+            <input type="button" id="btnApply" class="input_button" value="添加一级分类" onclick="showDialog(0)" />
+        </div>
+        
+    <table id="tt" class="easyui-treegrid"  data-options="idField:'id',treeField:'name'">    
+    <thead>   
+        <tr>   
+            <th data-options="field:'name',align:'center'">分类名称</th>   
+            <th data-options="field:'picon',width:80,align:'center'">分类图片</th>   
+            <th data-options="field:'createtime',width:250,align:'center'">创建时间</th>   
+            <th data-options="field:'orderid',width:100,align:'center'">排序</th>     
+            <th data-options="field:'_operate',width:300,align:'center'">操作</th>   
+        </tr>   
+    </thead>   
+</table> 
+
+    </div>
+</div>
+
+<div id="dlg" class="easyui-dialog" title="添加一级分类" data-options="closed: true,modal:true" style="width:600px;height:auto;">
+    
+    <form enctype="multipart/form-data" id="UpLoadForm">
+        <div style="margin:10px 5px 10px 5px;">
+            <label>
+                <span class="redTxt">*</span>分类名称：</label>
+            <div class="form-group">
+                <input class="input_text medium" type="text" id="cname" name="cname" maxlength="64"  /><span style="color:#ababab;">（最多不超过64个汉字）</span>
+            </div>
+        </div>
+        <div style="margin:10px 5px 10px 5px;">
+            <label>
+                关键词：</label>
+            <div class="form-group">
+                <input class="input_text medium" type="text" id="keyword" name="keyword" maxlength="30" /><br />
+                <div style="height:5px;"></div>
+                <span style="color:#ababab;">（关键词之间请用逗号，隔开。关键词为微信回复的关键词）</span>
+            </div>
+        </div>   
+        <div style="margin:10px 5px 10px 5px;">
+            <label>
+                分类图片：</label>
+            <div  style="vertical-align:middle;height:60px;line-height:60px;display:block;">
+                <img  src="../../Content/images/noimage.png" alt="" id="showPic"  style="vertical-align:middle;height:50px;width:50px;"/>&nbsp;
+                <input type="button" id="uploadPhoto"  value="选择图片" class="input_button" onclick="$('#imgFile').click();">&nbsp;
+                <input type="file" id="imgFile" name="imgFile" style="display:none;" onchange="uploadImg('UpLoadForm','imgFile','Around','showPic')"/>
+                <input type="button"  class="input_button" value="裁剪" onclick="alert(0)" />
+             <span style="color:#ababab;">（建议上传尺寸为560px*320px的图片）</span>
+            </div>
+        </div>
+        <div style="margin:10px 5px 10px 5px;display:none;">
+        <label>
+                所属一级分类：</label>
+                <select id="parentcategory">
+                <option value="-1">请选择</option>
+                </select>
+        </div>
+        <div style="margin:10px 5px 10px 5px;text-align:center;border-top:1px solid #c8c8c8;padding-top:10px;">
+            
+            <input type="button"  class="input_button" value="确定" onclick="save(1,'AroundTravel')" />&nbsp;
+            <input type="button"  class="input_button" value="关闭" onclick="$('#dlg').dialog('close');" />
+        </div>
+    </form>
+</div>
+
+<script src="../../Content/js/jquery.form.js" type="text/javascript"></script>
+<script src="../../Content/js/uploadfile.js" type="text/javascript"></script>
+<script src="../../Content/js/category.js" type="text/javascript"></script>
+<script>
+    function showDialog(type) {//
+        $('#dlg').dialog('open');
+    }
+</script>

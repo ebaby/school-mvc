@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Menu";
+}
+
+@*<script src="../../Content/viewmodel/admin/index.js"></script>*@
+<script src="../../Areas/Admin/ViewModel/home/index.js"></script>
+
+<div class="main" id="main">
+    <div class="head_h">
+        <div class="rootpath">您现在的位置： <a href="#">系统管理</a> > 站点信息</div>
+        <!--<h1>
+            <span>菜单查询</span>
+            <input type="button" id="btnPublish" value="添加菜单" class="input_button" onclick="addMenu()" /></h1>-->
+
+    </div>
+    <div>
+        <form enctype="multipart/form-data" id="CategoryForm">
+
+            <p>
+                <label>
+                    <span class="redTxt">*</span>电话：
+                </label>
+                <div class="form-group">
+                    <input class="input_text medium" type="text" data-bind="value:site.phone" value="" />
+                </div>
+            </p>
+
+            <p>
+                <label>
+                    <span class="redTxt">*</span>邮箱：
+                </label>
+                <div class="form-group">
+                    <input class="input_text medium" type="text" data-bind="value:site.email" value="" />
+                </div>
+            </p>
+            <p>
+                <label>
+                    <span class="redTxt">*</span>地址：
+                </label>
+                <div class="form-group">
+                    <input class="input_text medium" type="text" data-bind="value:site.address" value="" />
+                </div>
+            </p>
+            <p>
+                <label>
+                    
+                </label>
+                <div class="form-group">
+                    <a class="easyui-linkbutton" data-options="width:'60px'" data-bind="click:save">确定</a>
+                </div>
+            </p>
+
+
+
+        </form>
+    </div>
+
+
+</div>
+
+
+<script>
+    $(function () {
+        var viewModel = new indexViewModel();
+        ko.applyBindings(viewModel, document.getElementById('main'));
+        viewModel.Init();
+    });
+</script>

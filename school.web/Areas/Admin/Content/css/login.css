@@ -1,0 +1,93 @@
+﻿/**
+    设置登录框样式
+    ***/
+
+body, html
+{
+    overflow: hidden;
+}
+
+body
+{
+    color: #666666;
+    background: #a6cdfd;
+    padding: 0;
+    margin: 0;
+    font: 9pt Arial;
+}
+.wrapper {
+		width:100%;
+		margin:0 auto;
+		text-align:left;
+}
+
+.loginbg
+{
+    background: url(/Content/images/loginbg.png) #a6cdfd no-repeat top center;
+}
+
+.login_wrapper
+{
+    width: 565px;
+    margin: 226px auto;
+}
+
+.input_wrapper
+{
+    margin-left: 250px;
+}
+
+.title
+{
+    font: 10pt "微软雅黑";
+    color: #336699;
+    font-weight: bold;
+}
+
+.input_wrapper div
+{
+    margin-bottom: 11px;
+}
+
+.text_input
+{
+    line-height: 20px;
+    height: 20px;
+    width: 190px;
+    color: #333;
+    border: #6699cc 1px solid;
+    font-weight: bold;
+}
+
+.button
+{
+    background: url(/Content/images/button.gif) no-repeat;
+    width: 68px;
+    height: 26px;
+    color: #3a3c3f;
+    border: none;
+    margin-right: 5px;
+    font-family: "宋体";
+}
+
+.button_div
+{
+    margin-left: 55px;
+}
+
+/**
+    错误提示
+    **/
+.errorMessageClass
+{
+    border:1px solid red;
+}
+span[class~=icon-fatcow-error],
+span[class*=icon-fatcow-tick]
+{
+    position: relative;
+    display: inline-block;
+    margin-left: 3px;
+    width: 16px;
+    height: 16px;
+}

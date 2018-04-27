@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="/Content/css/css.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/css_2.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/nzcms_top.css" rel="stylesheet" type="text/css" />
+    <link href="//cdn.bootcss.com/toastr.js/latest/css/toastr.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/knockout/3.4.2/knockout-min.js"></script>
+    <script src="/Content/plugins/commons.js"></script>
+    <script src="/Content/viewmodel/layout/layout.js"></script>
+    <script src="/Content/plugins/moment.min.js"></script>
+    <script src="/Content/plugins/lunar-calendar.js"></script>
+    <script src="//cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+</head>
+<body bgcolor="#ffffff" leftmargin="0" topmargin="0">
+    <div id="main">
+        <!--登录框 -->
+        <!-- jxycxy.com Baidu tongji analytics -->
+
+        <table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" background="/Content/images/top_bg.jpg" bgcolor="#FFFFFF">
+            <tbody>
+                <tr>
+                    <td height="28" valign="middle">
+                        &nbsp;&nbsp;<img src="/Content/images/time.gif" width="12" height="12">&nbsp;
+
+                        <span data-bind="text:currentDate">2016年08月06日星期六农历丙申年(猴)七月初四</span>
+
+                    </td>
+                    <td align="right" valign="middle">
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <form action="http://www.gsycjx.cn/file/login.asp" method="post" name="form" id="form" onsubmit="return Validator.Validate(this,2)"></form>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        用户名：
+                                        <input name="username" type="text" class="index_dr" id="username" size="5" datatype="Require" style="height:18px" msg="请填写正确的管理帐号！" data-bind="value:vm.username" />
+                                        &nbsp;密码：
+                                        <input name="userpassword" type="password" class="index_dr" id="userpassword" size="5" datatype="Require" style="height:18px" msg="请填写正确的管理密码！" data-bind="value:vm.password" />
+                                        &nbsp;
+                                        验证码：
+                                        <input name="number" type="text" class="index_dr" id="number" value="" size="4" maxlength="4" datatype="Require" msg="请不要非法提交！" data-bind="value:vm.verifycode" style="height:18px">
+                                        &nbsp;<img  alt="点击可以刷新验证码" data-bind="attr:{src:imgcode},event:{click:getImgCode}" style="height:18px;">
+                                        <input name="Submit" type="button" class="top-so" value="登录" data-bind="click:login"/>
+                                        &nbsp;
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </td>
+                    <td width="60" align="center"><!--<a href="javascript:" onclick="jscript:window.external.AddFavorite(document.location.href,document.title);">收藏本站</a>--></td>
+                    <td width="60" align="center">
+                        <!--<a href="javascript:StranBody()" id="StranLink" onmouseover="hideFocus=true" title="點擊（繁、繁互轉）"><strong class="red">繁體版</strong></a>-->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!--登录框 -->
+        <!--下拉这里开始 -->
+        <!--下拉这里结束 -->
+        <!--导航FLASH -->
+        <table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="1004" height="220">
+                            <param name="movie" value="flash/top/top.swf">
+                            <param name="quality" value="high">
+                            <param name="wmode" value="transparent">
+                            <embed src="flash/top/top.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="1004" height="220">
+                        </object>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--导航FLASH -->
+        <!--导航 -->
+        <table width="1004" border="0" align="center" cellpadding="0" cellspacing="0" background="/Content/images/nzcms_top01.gif" bgcolor="#093887" class="top">
+            <tbody>
+                <tr>
+                    <td width="1004" height="38" align="center" valign="middle">
+                        <table border="0" cellpadding="0" cellspacing="0" id="sddm">
+                            <tbody>
+                                <tr data-bind="foreach:menuItems">
+
+                                    <td align="left">
+                                        <li>
+                                            <table name="tbmenu" data-bind="style:{width:$root.tablewidth()+'px',background:id==1001?'#EE9A00': '#0363B5',borderRight:'1px solid #ffffff'}" border="0" cellpadding="0" cellspacing="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td height="38" align="center">
+                                                            <a style="cursor:pointer;" class="left" data-bind="click:$root.goToDetail">
+                                                                <span data-bind="text:name" style="color:#ffffff;font-size:14px;">首页</span>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table><div id="m702" onmouseover="mcancelclosetime()" onmouseout="mclosetime()"><table border="0" cellpadding="0" cellspacing="0" class="top01" background="/Content/images/01.gif"><tbody><tr></tr></tbody></table></div>
+                                        </li>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--导航-->
+    </div>
+
+
+    <div id="context">
+        @RenderBody()
+    </div>
+
+    <div>
+        <table width="1004" height="30" border="0" align="center" cellpadding="0" cellspacing="0" background="/Content/images/end.gif">
+            <tbody>
+                <tr>
+                    <td width="30" align="center">&nbsp;</td>
+                    <td align="left">&nbsp;</td>
+                    <td width="80" align="center"><a href="javascript:void(null)"><font class="white">返回顶部↑</font></a></td>
+                </tr>
+            </tbody>
+        </table>
+        <table width="1004" border="0" align="center" cellpadding="15" cellspacing="0" background="/Content/images/end_bg.gif" bgcolor="#FFFFFF">
+            <tbody>
+                <tr>
+                    <td align="center" valign="top" class="end">
+                        联系电话：<span data-bind="text:site.phone">0797-8385956</span>    邮箱:<span data-bind="text:site.email">gzycxy@126.com</span>      地址：<span data-bind="text:site.address">赣州市水南镇岭头上（水南派出所旁）</span> <br />
+                        本站最佳浏览效果：1024*768分辨率/建议使用微软公司浏览器IE6.0以上&nbsp;&nbsp;
+                        <br>
+                        <br>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="display:none"> | Copyright Right&#169;2008-2014 Ningzhi.Net Powered | By:Nzcms v4.7.20 | 2860 | </div>
+        <div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png);"></div><div id="tip-top" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png) repeat-x;"></div><div id="tip-right-top" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png);"></div><div id="tip-right" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png) repeat-y;"></div><div id="tip-right-bottom" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png);"></div><div id="tip-bottom" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png) repeat-x;"></div><div id="tip-left-bottom" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png);"></div><div id="tip-left" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png);"></div><div id="tip-arrow-top" style="background: url(chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png);"></div></div>
+    </div>
+</body>
+</html>
+<script>
+    
+        var viewModel = new layoutViewModel();
+        ko.applyBindings(viewModel, document.getElementById('main'));
+        viewModel.Init();
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "positionClass": "toast-top-right",
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "2000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    
+</script>

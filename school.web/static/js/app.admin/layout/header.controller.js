@@ -1,0 +1,16 @@
+﻿define(['require','angular'],function(require,ng){
+	var module = ng.module('app.layout');
+	module.controller('HeaderCtrl', ['$scope','$state', function($scope,$state){
+		$scope.vm = {
+						
+		}
+		
+		initialize();
+		function initialize(){
+			
+					
+		}
+		
+		
+	}])
+});

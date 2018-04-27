@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "LoginOut";
+}
+<style type= "text/css">  
+            .tz
+            {   
+                font-family:Helvetica, Microsoft YaHei, Arial, sans-serif;   
+                font-size:20px;  
+                margin-bottom:5px;   
+                color:#151515;  
+            }  
+            #timer  
+            {  
+                font-family:Helvetica, Microsoft YaHei, Arial, sans-serif;   
+                font-size:24px;  
+                color:#FE2010;  
+                font-weight:bold;  
+            }  
+        </style> 
+<script src="../../Content/plugins/jquery-1.11.3.min.js"></script>
+<script>
+    var secs = 5; //倒计时的秒数    
+    var URL;
+    function timer(url) {
+
+        URL = url;
+        for (var i = secs; i >= 0; i--) {
+            window.setTimeout('doUpdate(' + i + ')', (secs - i) * 1000);
+        }
+    }
+    function doUpdate(num) {
+        document.getElementById('timer').innerHTML = num;
+        if (num == 0) { window.location = URL; }
+    }  
+</script>
+<div style="text-align:center;margin-top:100px;">
+<span class="tz">对不起，您还没有登录，距离跳转登录页面还有</span><span id = "timer"></span><span class="tz">秒</span>
+</div>
+<script>
+    $(function () {
+        timer("/Login/Login");
+    });
+</script>

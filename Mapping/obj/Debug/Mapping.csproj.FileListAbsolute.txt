@@ -1,0 +1,13 @@
+D:\WorkResource\EduProject\C#\school\Mapping\bin\Debug\Mapping.dll.config
+D:\WorkResource\EduProject\C#\school\Mapping\bin\Debug\Mapping.dll
+D:\WorkResource\EduProject\C#\school\Mapping\bin\Debug\Mapping.pdb
+D:\WorkResource\EduProject\C#\school\Mapping\bin\Debug\Domain.dll
+D:\WorkResource\EduProject\C#\school\Mapping\bin\Debug\EntityFramework.dll
+D:\WorkResource\EduProject\C#\school\Mapping\bin\Debug\EntityFramework.SqlServer.dll
+D:\WorkResource\EduProject\C#\school\Mapping\bin\Debug\Domain.pdb
+D:\WorkResource\EduProject\C#\school\Mapping\bin\Debug\EntityFramework.xml
+D:\WorkResource\EduProject\C#\school\Mapping\bin\Debug\EntityFramework.SqlServer.xml
+D:\WorkResource\EduProject\C#\school\Mapping\obj\Debug\Mapping.csprojResolveAssemblyReference.cache
+D:\WorkResource\EduProject\C#\school\Mapping\obj\Debug\Mapping.csproj.CoreCompileInputs.cache
+D:\WorkResource\EduProject\C#\school\Mapping\obj\Debug\Mapping.dll
+D:\WorkResource\EduProject\C#\school\Mapping\obj\Debug\Mapping.pdb

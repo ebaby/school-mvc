@@ -1,0 +1,16 @@
+D:\WorkResource\EduProject\C#\school\Domain\bin\Debug\Domain.dll
+D:\WorkResource\EduProject\C#\school\Domain\bin\Debug\Domain.pdb
+D:\WorkResource\EduProject\C#\school\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+D:\WorkResource\EduProject\C#\school\Domain\obj\Debug\Domain.dll
+D:\WorkResource\EduProject\C#\school\Domain\obj\Debug\Domain.pdb
+D:\WorkResource\EduProject\C#\school\Domain\bin\Debug\Common.dll
+D:\WorkResource\EduProject\C#\school\Domain\bin\Debug\DapperExtensions.dll
+D:\WorkResource\EduProject\C#\school\Domain\bin\Debug\MySql.Data.dll
+D:\WorkResource\EduProject\C#\school\Domain\bin\Debug\Newtonsoft.Json.dll
+D:\WorkResource\EduProject\C#\school\Domain\bin\Debug\Dapper.dll
+D:\WorkResource\EduProject\C#\school\Domain\bin\Debug\Common.pdb
+D:\WorkResource\EduProject\C#\school\Domain\bin\Debug\Common.dll.config
+D:\WorkResource\EduProject\C#\school\Domain\bin\Debug\DapperExtensions.pdb
+D:\WorkResource\EduProject\C#\school\Domain\bin\Debug\Newtonsoft.Json.xml
+D:\WorkResource\EduProject\C#\school\Domain\bin\Debug\Dapper.xml
+D:\WorkResource\EduProject\C#\school\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache

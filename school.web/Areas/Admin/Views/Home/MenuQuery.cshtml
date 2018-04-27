@@ -1,0 +1,184 @@
+﻿@{
+    ViewBag.Title = "Menu";
+}
+
+@*<script src="/Content/viewmodel/admin/menuquery.js"></script>*@
+<script src="../../Areas/Admin/ViewModel/home/menuquery.js"></script>
+
+<div class="main" id="menupage" >
+    <div class="head_h">
+    <div class="rootpath">您现在的位置： <a href="#">系统管理</a> > 菜单查询</div>
+    <!--<h1>
+        <span>菜单查询</span>
+        <input type="button" id="btnPublish" value="添加菜单" class="input_button" onclick="addMenu()" /></h1>-->
+    
+    </div>
+    <form>
+    <div class="search-form">
+        <div class="table-wrapper">
+            <table>
+                <tr>
+                    <td style="width:80px;">
+                        菜单名称
+                    </td>
+                    <td style="width:200px;">
+                        <input name="menuname" id="menuname" class="input_text" type="text" />
+                    </td>
+                    <td style="width:100px;">
+                        父级菜单名称
+                    </td>
+                    <td style="width:200px;">
+                        <select class="control_select"data-bind="options: menuItems,optionsText: 'text',optionsValue: 'id',optionsCaption: '请选择',value:''" id="pid"></select>
+                    </td>
+                    <!--<td style="width:80px;">
+                        平台类型
+                    </td>
+                    <td>
+                    <select name="stype" id="stype">
+                        <option value="-1">请选择</option>
+                        <option value="0">特卖平台</option>
+                        <option value="1">旅游平台</option>
+                    </select>
+                    </td>-->
+                    <td>
+                        <a data-bind="click:search" class="easyui-linkbutton"  data-options="width:'60px',iconCls:'icon-search'">搜索</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+         <div class="btn-bar">
+            
+        </div>
+            
+    </div>
+    </form>
+    
+    
+    
+    <!--<div style="border:#c4d5e0 1px solid;border-top:none;margin-top:-10px;">-->
+    <table class="grid marT" id="tbList">    
+        <!--<tr>
+            <th style="text-align:center;">
+                菜单名称
+            </th>
+            <th style="text-align:center;">
+               父级菜单名称
+            </th>
+            <th style="width: 80px;text-align:center;">
+                是否可见
+            </th>
+            <th style="width: 80px;text-align:center;">
+                是否启用
+            </th>
+            <th style="width: 80px;text-align:center;">
+                来源类型
+            </th>
+            <th style="width: 140px;text-align:center;">
+                创建时间
+            </th>
+            <th style="width: 80px;text-align:center;">
+                操作
+            </th>
+        </tr>
+        <tr>
+        <td colspan="6"  style="text-align:center;">暂无数据</td>
+        </tr>
+        -->
+    </table>
+    <!--</div>-->
+    
+    <div id="dlgmenu"  title="编辑菜单"  style="width: 500px; height: auto;display:none;">
+        <form enctype="multipart/form-data" id="CategoryForm">
+
+        <p>
+            <label>
+                <span class="redTxt">*</span>名称：</label>
+                <div class="form-group">
+            <input class="input_text medium" type="text" data-bind="value:form.name" value=""  /></div>
+        </p>
+       
+        <p>
+            <label>
+                <span class="redTxt">*</span>父级菜单：</label>
+                <div class="form-group">
+                <!--<input id="parentid" class="easyui-combotree" value="" data-options="url:'/Admin/LoadMenus?parentid=0&page=1&rows=999',method:'get',required:true" style="width:150px;">-->
+                <select class="control_select"data-bind="options: menuItems,optionsText: 'text',optionsValue: 'id',optionsCaption: '作为父级菜单',value:form.parentid" id="parentid"></select>
+            </div>
+        </p>
+        
+        
+        <p>
+            <label>
+                排序：</label>
+                <div class="form-group">
+                    <input class="input_text short" type="text"  data-bind="value:form.orderid"  onkeyup="value=value.replace(/[^\d]/g, '')" style="width:80px;"  value="" />
+                </div>
+        </p>
+        <p>
+            <label>
+                图标：</label>
+                <div class="form-group">
+            <input class="input_text medium" type="text"  data-bind="value:form.icon" value=""  /></div>
+        </p>
+        <p>
+            <label>
+                路径：</label>
+                <div class="form-group">
+            <input class="input_text medium" type="text"  data-bind="value:form.path" value=""  /></div>
+        </p>
+        <p>
+            <label>
+                是否显示：</label>
+                <div class="form-group">
+            <input  type="checkbox" data-bind="checked:form.isvisible"   /></div>
+        </p>
+        <p>
+            <label>
+                是否启用：</label>
+                <div class="form-group">
+            <input type="checkbox"  data-bind="checked:form.isenabled"   /></div>
+        </p>
+            <p>
+                <label>
+                    是否有文章：
+                </label>
+                <div class="form-group">
+                    <input type="checkbox" data-bind="checked:form.hasarticle" />
+                </div>
+            </p>
+        
+        <!--<p>
+            <label>
+                数据来源：</label>
+                <div class="form-group">
+                    <input type="radio" name="sourcetype"  value="0" data-bind="checked:form.sourcetype" />特卖
+                    <input type="radio" name="sourcetype" value="1" data-bind="checked:form.sourcetype" />旅游
+                </div>
+        </p>-->
+        <p>
+            <label>
+                描述：</label>
+                <div class="form-group">
+            <textarea name="remark" style="height:80px;" data-bind="value:form.remark" ></textarea>
+            </div>
+        </p>
+
+
+            <div style="margin: 10px 5px 10px 5px; text-align: center; border-top: 1px solid #c8c8c8; padding-top: 10px;">
+
+                <!--<input type="button" id="btnUpd" class="input_button" value="确定" data-bind="click:save"  />&nbsp;
+                        <input type="button" class="input_button" value="关闭" onclick="$('#dlgmenu').dialog('close');" />-->
+                <a  class="easyui-linkbutton" data-options="width:'60px'" data-bind="click:save">确定</a>&nbsp;&nbsp;<a  data-options="width:'60px'" class="easyui-linkbutton"  id="btnClose" >关闭</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    //$(function () {
+        var viewModel = new menuViewModel();
+        ko.applyBindings(viewModel, document.getElementById('menupage'));
+        viewModel.Init();
+    //});
+</script>

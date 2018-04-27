@@ -1,0 +1,243 @@
+<div class="dyjl" style="margin-top: 40px;" ng-show="vm.tabindex==0" id="dvmain">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="150" height="36" align="right">姓名：</td>
+            <td>
+                <input name="input" type="text" value="" class="jzd-input w400" ng-model="vm.userinfo.realname" />
+            </td>
+        </tr>
+        <tr>
+            <td height="20" align="right">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td height="36" align="right">性别：</td>
+            <td>
+                <label style="margin-right: 20px;">
+                    <input type="radio" name="sex" ng-checked="vm.userinfo.sex==='男'" ng-model="vm.userinfo.sex" value="男"><span class="i-marginl">男</span>
+                </label>
+                <label>
+                    <input type="radio" name="sex" ng-checked="vm.userinfo.sex==='女'" ng-model="vm.userinfo.sex" value="女"><span class="i-marginl">女</span>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td height="20" align="right">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td height="36" align="right">手机：</td>
+            <td>
+                <input name="input2" type="text" value="157*****124" class="jzd-input w400" ng-model="vm.userinfo.starphone"  disabled="disabled"/><a href="javascropt:void(null)" class="dy-bgs" ng-click="selectTab(1)">变更手机</a></td>
+        </tr>
+        <tr>
+            <td height="20" align="right">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td height="30" align="right">密码：</td>
+            <td height="36">
+                <input name="input3" type="text" value="********" class="jzd-input w400" /><a href="javascropt:void(null)" class="dy-bgs" ng-click="selectTab(2)">修改密码</a></td>
+        </tr>
+        <tr>
+            <td height="20" align="right">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td height="36" align="right">班级：</td>
+            <td>
+                <!--<select class="bs-select form-control bs-select-hidden font-minsong" data-width="125px" ng-model="currentclass" ng-options="v.classname for v in vm.classinfo">
+                    <option value="">请选择</option>
+                </select>-->
+                <select  class="select1" data-width="125px" ng-model="currentclass" ng-options="v.classname for v in vm.classinfo">
+                     <option value="1">北京市</option>
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td height="20" align="right">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td height="36" align="right">更换头像：</td>
+            <td>
+                <div>
+                    <div class="dy-xgtx float-l">
+                        <img src="images/zbk-03.png" ng-src="{{vm.userinfo.pic}}" id="headpic" /></div>
+                    <div class="float-l dy-xg"><a ng-click="selectTab(3)">修改</a></div>
+                    <div class="clear"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">&nbsp;</td>
+            <td>
+                <div class="dy-gs">格式：.png  .jpg  .gif，大小1M以内</div>
+            </td>
+        </tr>
+        <tr>
+            <td height="30" align="right">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td height="30" align="right">&nbsp;</td>
+            <td>
+                <input type="submit" name="button" id="button" value="保存" class="jzd-blue jzd-anwz" ng-click="studentUserInfoSave()" /></td>
+        </tr>
+    </table>
+</div>
+
+<div class="dyjl" style="margin-top: 40px;" ng-show="vm.tabindex==2">
+    <form  name="formPwd">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+
+            <tr>
+                <td height="30" align="center" class="font-eight">修改密码</td>
+                <td height="36">&nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td height="20" align="right">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td height="30" align="right">原始密码：</td>
+                <td height="36">
+                    <input name="oldpwd" type="password" value="" maxlength="16" minlength="6" class="jzd-input w400" placeholder="请输入原密码" ng-model="vm.oldpwd" required />
+                    <span class="class-zq" ng-if="vm.oldpwd"></span>
+                    <span ng-if="vm.submitted">
+                        <span class="class-cwxx" ng-show="formPwd.oldpwd.$error.required && (formPwd.oldpwd.$invalid && !formPwd.oldpwd.$pristine ||!vm.oldpwd&&vm.submitted)">原密码不能为空</span>
+                    </span>
+                    <span class="class-cwxx" ng-show="formPwd.oldpwd.$error.minlength">密码长度不小于6</span>
+
+                </td>
+            </tr>
+            <tr>
+                <td height="20" align="right">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td height="30" align="right">新密码：</td>
+                <td height="36">
+                    <input name="newpwd" type="password" value="" class="jzd-input w400" placeholder="请输入6-12字符的新密码" ng-model="vm.newpwd" maxlength="16" minlength="6" required />
+                    <!--<span class="class-zq" ng-show="vm.newpwd&&!formPwd.newpwd.$error.minlength"></span>
+                    <span class="class-cwxx" ng-show="formPwd.newpwd.$error.required && (formPwd.newpwd.$invalid && !formPwd.newpwd.$pristine ||!vm.newpwd&&vm.submitted)">密码长度为6-16位，数字，大小写字母</span>-->
+                    <span class="class-zq" ng-if="vm.newpwd"></span>
+                    <span ng-if="vm.submitted">
+                        <span class="class-cwxx" ng-show="formPwd.newpwd.$error.required && (formPwd.newpwd.$invalid && !formPwd.newpwd.$pristine ||!vm.newpwd&&vm.submitted)">新密码不能为空</span>
+                    </span>
+                    
+                    <span class="class-cwxx" ng-show="formPwd.newpwd.$error.minlength">密码长度不小于6</span>
+                </td>
+            </tr>
+            <tr>
+                <td height="20" align="right">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td height="30" align="right">确认新密码：</td>
+                <td height="36">
+                    <input name="pwdconfirm" type="password" value="" class="jzd-input w400" maxlength="16" minlength="6" placeholder="请再次输入密码" ng-model="vm.pwdconfirm" required />
+                    <span ng-if="vm.submitted">
+                        <span class="class-cwxx" ng-show="formPwd.pwdconfirm.$error.required && (formPwd.pwdconfirm.$invalid && !formPwd.pwdconfirm.$pristine ||!vm.pwdconfirm&&vm.submitted)">确认新密码不能为空</span>
+                    </span>
+                    <span class="class-zq" ng-if="vm.pwdconfirm==vm.newpwd&&vm.pwdconfirm"></span>
+                    
+                    <span class="class-cwxx" ng-show="formPwd.pwdconfirm.$error.minlength">密码长度不小于6</span>
+                    <span class="class-cwxx" ng-show="!formPwd.pwdconfirm.$error.minlength&&!formPwd.pwdconfirm.$error.minlength&&vm.newpwd!=vm.pwdconfirm&&vm.pwdconfirm">两次密码输入不一致</span>
+                </td>
+            </tr>
+            <tr>
+                <td height="20" align="right">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td height="30" align="right">&nbsp;</td>
+                <td>
+                    <input type="submit" name="button" id="Submit1" value="确认修改" class="jzd-blue jzd-anwz" ng-click="studentUserInfoUpdatePwd(formPwd.$valid)" />
+                    <input type="submit" name="button" id="Submit4" value="取消" class="jzd-blue jzd-anwz back-gray" ng-click="selectTab(0)" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
+<div class="dyjl" style="margin-top: 40px;" ng-show="vm.tabindex==1">
+     <form  name="formPhone">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" >
+
+        <tr>
+            <td height="30" align="center" class="font-eight">修改手机号</td>
+            <td height="36">&nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td height="20" align="right">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td height="30" align="right">登录密码：</td>
+            <td height="36">
+                <input name="loginpwd" type="password" value="" class="jzd-input w400" ng-model="vm.loginpwd" placeholder="请输入登录密码" required/>
+                <span class="class-zq" ng-if="vm.loginpwd"></span>
+                <span class="class-cwxx" ng-show="formPhone.loginpwd.$error.required && (formPhone.loginpwd.$invalid && !formPhone.loginpwd.$pristine ||!vm.loginpwd&&vm.submitted)">请输入登录密码</span>
+            </td>
+        </tr>
+        <tr>
+            <td height="20" align="right">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td height="30" align="right">新手机号码：</td>
+            <td height="36">
+                <input name="newmobile" type="text" value="" class="jzd-input w400" placeholder="请输入新的手机号" maxlength="11" ng-model="vm.newmobile" required />
+                <span class="class-zq" ng-if="vm.newmobile"></span>
+                <span class="class-cwxx" ng-show="formPhone.newmobile.$error.required && (formPhone.newmobile.$invalid && !formPhone.newmobile.$pristine ||!vm.newmobile&&vm.submitted)">手机号码格式错误</span>
+                
+            </td>
+        </tr>
+        <tr>
+            <td height="20" align="right">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td height="30" align="right">手机验证码：</td>
+            <td height="36">
+                <input name="valiestr" type="text" value="" class="jzd-input" style="width: 275px;" placeholder="请输入手机验证码" ng-model="vm.valiestr" maxlength="4" required  />
+                <span class="auth-code cursor" ng-if="!vm.smsindex" ng-click="getNoteCode()">获取短信校验码</span>
+                <span class="auth-code" ng-if="vm.smsindex">重新发送(<span>{{vm.smstime}}</span>)</span>
+                <span class="class-zq" ng-if="vm.valiestr"></span>
+                <span class="class-cwxx" ng-show="formPhone.valiestr.$error.required && (formPhone.valiestr.$invalid && !formPhone.valiestr.$pristine ||!vm.valiestr&&vm.submitted)">请输入手机验证码</span>
+                
+            </td>
+        </tr>
+        <tr>
+            <td height="20" align="right">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td height="30" align="right">&nbsp;</td>
+            <td>
+                <input type="submit" name="button" id="Submit3" value="确认修改" class="jzd-blue jzd-anwz" ng-click="updateUserMobile(formPhone.$valid)" />
+                <input type="submit" name="button" id="Submit2" value="取消" class="jzd-blue jzd-anwz back-gray" ng-click="selectTab(0)" />
+
+            </td>
+        </tr>
+    </table>
+         </form>
+</div>
+
+<div class="dyjl" style="margin-top: 40px;" ng-show="vm.tabindex==3">
+
+    <div upload-img img-options="imgOptions" tabindex="vm.tabindex" style="height: 500px; margin-left: 20px">
+    </div>
+    <div style="text-align:center;">
+        <input type="submit" name="button" id="Submit5" value="取消" class="jzd-blue jzd-anwz back-gray" ng-click="selectTab(0)" />
+    </div>
+</div>
+
+<script type="text/javascript">
+    setMinheight();
+</script>

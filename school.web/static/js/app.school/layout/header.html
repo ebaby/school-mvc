@@ -1,0 +1,93 @@
+<header class="page-header ">
+    <nav class="navbar mega-menu " role="navigation">
+        <div class="navbar-fixed-top content-area header-top" >
+            <div class="hor-menu" >
+                <ul class="nav navbar-nav" ng-mouseleave="dropdownLeave()">
+                    <li class="menu-dropdown classic-menu-dropdown " ng-class="{'active':vm.tabindex==0}">
+                        <a href="javascript:;" ng-mouseover="selectBar(0)" ng-click='selectTab(0,0)'>
+                            首页
+                            <!--<span class="arrow"></span>-->
+                        </a>
+
+                    </li>
+                    <li class="menu-dropdown mega-menu-dropdown  " ng-class="{'active':vm.tabindex==1}">
+                        <a href="javascript:;" ng-mouseover="selectBar(1)">
+                            图书
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="dropdown-menu pull-left" id="dropdown1">
+                            <li class=" active">
+                                <a href="javascript:;" class="nav-link  active" ng-click='selectTab(1,0)'>
+                                    发布图书
+                                </a>
+                            </li>
+                            <li class=" ">
+                                <a href="javascript:;" class="nav-link  " ng-click='selectTab(1,1)'>
+                                    图书管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-dropdown classic-menu-dropdown " ng-class="{'active':vm.tabindex==2}">
+                        <a href="javascript:;" ng-mouseover="selectBar(2)">
+                            统计
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="dropdown-menu pull-left" id="dropdown2">
+                            <li class=" ">
+                                <a href="javascript:;" class="nav-link  " ng-click='selectTab(2,0)'>用户统计 </a>
+                            </li>
+                            <li class=" ">
+                                <a href="javascript:;" class="nav-link  " ng-click='selectTab(2,1)'>图书统计</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-dropdown mega-menu-dropdown " ng-class="{'active':vm.tabindex==3}">
+                        <a href="javascript:;" ng-mouseover="selectBar(3)">
+                            推广
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="dropdown-menu pull-left" id="dropdown3">
+                            <li class=" ">
+                                <a href="javascript:;" class="nav-link  " ng-click='selectTab(3,0)'>我是广告主 </a>
+                            </li>
+                            <li class=" ">
+                                <a href="javascript:;" class="nav-link  " ng-click='selectTab(3,1)'>我是流量主</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-dropdown classic-menu-dropdown " ng-class="{'active':vm.tabindex==4}">
+                        <a href="javascript:;" ng-mouseover="selectBar(4)">
+                            开发
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="dropdown-menu pull-left" id="dropdown4">
+                            <li class=" ">
+                                <a href="javascript:;" class="nav-link  " ng-click='selectTab(4,0)' ng-if="vm.openstatus!=2">申请开发者 </a>
+                                <a href="javascript:;" class="nav-link  " ng-click='selectTab(4,1)' ng-if="vm.openstatus==2">开发者信息 </a>
+                            </li>
+                            <li class="">
+                                <a href="http://toapi.yqj.cn/Help" class="nav-link " target="_blank">开发文档</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-dropdown classic-menu-dropdown " ng-class="{'active':vm.tabindex==5}">
+                        <a href="javascript:;" ng-mouseover="selectBar(5)">
+                            设置
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="dropdown-menu pull-left" id="dropdown5">
+                            <li class=" ">
+                                <a href="javascript:;" class="nav-link  " ng-click='selectTab(5,0)'>信息设置 </a>
+                            </li>
+                            <li class=" ">
+                                <a href="javascript:;" class="nav-link  " ng-click='selectTab(5,1)'>安全中心</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--/container-->
+    </nav>
+</header>

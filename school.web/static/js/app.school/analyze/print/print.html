@@ -1,0 +1,470 @@
+<div class=" container-top body-margin block-template content-left" style="padding:0;" >
+    <div class="title-breadcrumb">
+        <ul class="clearfix">
+            <li class="font-act">
+                <span ui-sref="app" class="cursor">首页</span>
+                <span style="margin: 0 6px;">&gt;</span>
+            </li>
+            <li class="font-act">
+                <span>学情分析</span><span style="margin: 0 6px;">&gt;</span>
+
+            </li>
+            <li>
+                <span >错题打印</span>
+            </li>
+        </ul>
+    </div>
+    <div style="padding:15px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet portlet-form " style="margin-bottom:0 !important;" >
+                <div class="md-radio-inline" >
+                    <div class="md-radio " ng-repeat="c in vm.classlist" style="margin:0 0 10px; width:25%">
+                        <input type="radio" id="rdo{{$index}}" name="rdoclass" value="1" class="md-radiobtn" ng-click="selectClass(c)" ng-checked="$index==0" />
+                        <label for="rdo{{$index}}">
+                            <span class="inc"></span>
+                            <span class="check"></span>
+                            <span class="boxext"></span>
+                        </label>
+                        <span ng-bind="c.gradename"></span>
+                        <span ng-bind="c.classname"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane ">
+                <ul class=" class-navtabs clearfix" style="margin-bottom: 0;list-style: none;">
+                    <li class="class-navtabsact" ng-class='{"class-navtabsact":vm.tabindex==0}'>
+                        <a href="javascript:void(null)" data-toggle="tab" aria-expanded="true" ng-click="selectTab(0)">个性化错题</a>
+                    </li>
+                    <li class="" ng-class='{"class-navtabsact":vm.tabindex==1}'>
+                        <a href="javascript:void(null)" data-toggle="tab" aria-expanded="false" ng-click="selectTab(1)">高频错题</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" style="position:relative;">
+                    <div class="tab-pane " ng-class="{'active':vm.tabindex==0}">
+                        <div class="portlet-body">
+                            <div class=" clearfix" >
+                                <div ng-click="openBox($event)" class="cursor font-six float-l" style="padding:15px 0 30px;">选择章节 <img src="img/icon-d.png" alt="Alternate Text" /></div>
+                                <div  ng-click="openStudent($event)" class="cursor font-six float-l" style="padding:15px 0 30px 20px;">选择学生 <img src="img/icon-d.png" alt="Alternate Text" /></div>
+                                <div class="float-r">
+                                    <button class="btn-circle  class-btnblue" style="width:90px;" ng-click="print('gxprint')">打印</button>
+                                </div>
+                                <div class="float-r">
+                                    <button class="btn-circle  class-btnblue" ng-click="downloadStudentWrong()">下载（word）</button>
+                                </div>
+                                
+                                <div class="block-graytemplate clearfix student-choose" ng-if="vm.boxsttudent">
+                                    <div ng-if="vm.upidlist.length>0" class="clearfix">
+                                        <div class="student-list cursor" ng-repeat="u in vm.upidlist" ng-click="multiStudent(u)">
+                                            <div class="learn-table-headpt poto-list">
+                                                <img src="img/a2.jpg" ng-src="{{u.upic}}">
+                                                <div class="check-xin fa fa-heart font-red " ng-if="u.isguanzhu==1"></div>
+                                                <div class="" ng-class="{'studen-act':u.checked}"></div>
+                                            </div>
+                                            <span class="font-minsong" ng-bind="u.username">珠珠</span>
+                                        </div>
+                                    </div>
+                                    <div class="" style="width: 100%; margin-top: 30px;" >
+                                        <button class="btn-circle btn-blue" ng-click="selectStudents()" style="margin-left:390px;">确定</button>
+                                    </div>
+                                    <div no-data datalist="vm.upidlist">
+                                        <div class="kby dy-blank" >
+                                               学生还没有错题～
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <ul class="class-check block-graytemplate clearfix"  ng-if="vm.boxstatus">
+                                    <li>
+                                        <!--<div ng-if="!vm.allchecked" ng-click="allChecked()">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                style="width: 15px; height: 15px;" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                                                <path d="M0,0v512h512V0H0z M480,480H32V32h448V480z" />
+                                            </svg>
+                                            全选
+                                        </div>-->
+                                        <div ng-if="!vm.allchecked" ng-click="allChecked()" class="clearfix">
+                                                <div class="float-l check-set">
+                                                     <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    style="width: 15px; height: 15px; margin-top: 2px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                    <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                        bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                        bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                        eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                        MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                        dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                        dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                        IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                        ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                        cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                        RD0ieG1wLmlpZDo5QjNDMjA2NDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                        bnRJRD0ieG1wLmRpZDo5QjNDMjA2NTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                        ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNUUyMzM4NjExRTY5QzNG
+                                                        QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNUUzMzM4NjExRTY5
+                                                        QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                        ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BY6V2wAAAHtJREFUeNpiXLVqFRsDA0M3EMcAsRADYfAe
+                                                        iBcDcSkTkOgCYjUg1gFiRiKwNlR9EwuQiIVqfM5AHACpSwLiK0xQpxKrEdkAISYGCsCo5pGj+R0Q
+                                                        S5KoTwKkjwmaQ+ZABYgBMkA8F6QHpLkMiO8A8TUg/k8EvgRVXwsQYACfEB5gLshgigAAAABJRU5E
+                                                        rkJggg==">
+                                                    </image>
+                                                   </svg>
+                                                </div>
+                                                <div class="float-l  line-h">
+                                                    全选
+                                                </div>
+                                            </div>
+                                        <!--<div ng-if="vm.allchecked" ng-if="c.checked" ng-click="allChecked()">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                style="width: 15px; height: 15px;" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                                                <path d="M0,0v512h512V0H0z M480,480H32V32h448V480z M384,112L224,272l-96-96l-64,64l160,160l224-224L384,112z" />
+                                            </svg>
+                                            全选
+                                        </div>-->
+                                         <div class="md-checkbox clearfix" ng-if="vm.allchecked" ng-if="c.checked" ng-click="allChecked()">
+                                                <div class="float-l  check-set">
+                                                        <svg version="1.1" id="Svg3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	                                                     style="width: 15px; height: 15px; margin-top:2px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                    <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                    bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                    bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                    eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                    MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                    dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                    dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                    IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                    ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                    cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                    RD0ieG1wLmlpZDo5QjEyQzVFMDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                    bnRJRD0ieG1wLmRpZDo5QjEyQzVFMTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                    ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNURFMzM4NjExRTY5QzNG
+                                                    QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNURGMzM4NjExRTY5
+                                                    QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                    ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7GfnjAAAAOhJREFUeNpitF/7k42BgaEbiGOAWIiBMHgP
+                                                    xIuBuJQJSHQBsRoQ6wAxIxFYG6q+iQVIxEI1PmcgDoDUJQHxFSaoU4nViGyAEBOJmnYA8Q8YhxTN
+                                                    U4DYHYh/kqp5AhBnA/ETIOYnRTMoNvKh/pRFlkDX/AeIHyPx20HxCcQvgVgK3VR0zTeAWAaI90Gj
+                                                    owKIXwOxBDYnsaDxQfG9AojDgdgR6kdZXP5hwSIWAcTS0FQkiy8wWHCI2xITBSA/vwNiSRITCygM
+                                                    3jFBc8gcXIGCBYACdC5ID0hzGRDfAeJrQPyfCHwJqr4WIMAAI14wiZLGvXEAAAAASUVORK5CYII=">
+                                                    </image>
+                                                    </svg>
+                                                </div>
+                                                <div class="float-l line-h">
+                                                   全选
+                                                </div>
+                                            </div>
+                                    </li>
+                                    <li ng-repeat="c in vm.charpterlist">
+                                         <div ng-if="!c.checked" ng-click="getCharpters(c,true)" class="clearfix">
+                                                <div class="float-l check-set">
+                                                     <svg version="1.1" id="Svg1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    style="width: 15px; height: 15px; margin-top: 2px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                    <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                        bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                        bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                        eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                        MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                        dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                        dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                        IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                        ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                        cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                        RD0ieG1wLmlpZDo5QjNDMjA2NDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                        bnRJRD0ieG1wLmRpZDo5QjNDMjA2NTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                        ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNUUyMzM4NjExRTY5QzNG
+                                                        QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNUUzMzM4NjExRTY5
+                                                        QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                        ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BY6V2wAAAHtJREFUeNpiXLVqFRsDA0M3EMcAsRADYfAe
+                                                        iBcDcSkTkOgCYjUg1gFiRiKwNlR9EwuQiIVqfM5AHACpSwLiK0xQpxKrEdkAISYGCsCo5pGj+R0Q
+                                                        S5KoTwKkjwmaQ+ZABYgBMkA8F6QHpLkMiO8A8TUg/k8EvgRVXwsQYACfEB5gLshgigAAAABJRU5E
+                                                        rkJggg==">
+                                                    </image>
+                                                   </svg>
+                                                </div>
+                                                <div class="float-l line-h ">
+                                                    <span ng-bind="c.charptername"></span>
+                                                </div>
+                                            </div>
+                                         <div class="md-checkbox clearfix" ng-if="c.checked" ng-click="getCharpters(c,false)" class="clearfix">
+                                                <div class="float-l  check-set">
+                                                        <svg version="1.1" id="Svg2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	                                                     style="width: 15px; height: 15px; margin-top:2px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                    <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                    bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                    bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                    eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                    MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                    dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                    dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                    IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                    ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                    cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                    RD0ieG1wLmlpZDo5QjEyQzVFMDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                    bnRJRD0ieG1wLmRpZDo5QjEyQzVFMTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                    ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNURFMzM4NjExRTY5QzNG
+                                                    QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNURGMzM4NjExRTY5
+                                                    QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                    ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7GfnjAAAAOhJREFUeNpitF/7k42BgaEbiGOAWIiBMHgP
+                                                    xIuBuJQJSHQBsRoQ6wAxIxFYG6q+iQVIxEI1PmcgDoDUJQHxFSaoU4nViGyAEBOJmnYA8Q8YhxTN
+                                                    U4DYHYh/kqp5AhBnA/ETIOYnRTMoNvKh/pRFlkDX/AeIHyPx20HxCcQvgVgK3VR0zTeAWAaI90Gj
+                                                    owKIXwOxBDYnsaDxQfG9AojDgdgR6kdZXP5hwSIWAcTS0FQkiy8wWHCI2xITBSA/vwNiSRITCygM
+                                                    3jFBc8gcXIGCBYACdC5ID0hzGRDfAeJrQPyfCHwJqr4WIMAAI14wiZLGvXEAAAAASUVORK5CYII=">
+                                                    </image>
+                                                    </svg>
+                                                </div>
+                                                <div class="float-l  line-h">
+                                                    <span ng-bind="c.charptername"></span>
+                                                    
+                                                </div>
+                                            </div>
+                                    </li>
+                                    <li>
+                                        <button class="btn-circle btn-blue" ng-click="getClassCharpterIdUserList()">确定</button>
+
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="clearfix" style="margin-bottom:30px;" >
+                                <div class="student-list clearfix cursor" ng-repeat="s in vm.selectedArray" ng-click="checkStudentWrong(s)">
+                                    <div class="learn-table-headpt poto-list">
+                                        <img src="img/a2.jpg" ng-src="{{s.upic}}">
+                                        <div class="check-xin fa fa-heart font-red " ng-if="s.isguanzhu==1"></div>
+                                        <div class="" ng-class="{'studen-act':s.pchecked}"></div>
+                                    </div>
+                                    <span class="font-minsong" ng-bind="s.username">珠珠</span>
+                                </div>
+
+                            </div>
+
+                            <div ng-if="stucharpterwrong.wrongdata.length>0" id="gxprint">
+                                <div class="block-graytemplate" ng-repeat="c in stucharpterwrong.wrongdata">
+                                    <div class="selectbook-title">
+                                        <span class="caption" ng-bind="c.charptername">第一章：4556</span>
+                                    </div>
+                                    <ul class="section-list ">
+                                        <li class="clearfix" ng-repeat="w in c.wronglist">
+                                            <div class="float-l" style="width: 4%; line-height: 20px;" ng-bind="$index+1">100、</div>
+                                            <div class="section-listover float-l"  custom-mathjax content="w.timuxushu" ng-bind-html="toHtml(w.timuxushu)">
+                                                1.根据从一个方向看到的图形，用给定数量的小正方题摆出性瘾的立体图形用给定时量的小正方题摆出立体图形用给定摆出性瘾的立体图形用给定时量的小正方题摆出立体图形用给定。       
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="row" style="text-align: right; margin-right: 50px;" ng-show="stucharpterwrong.wrongdata.length>0">
+                                <div set-pagination page-options="gxlistOptions" class="pagination"></div>
+                            </div>
+
+                            <div no-data datalist="stucharpterwrong.wrongdata">
+                               <!-- <div style="width: 370px; margin: 0px auto; display: none;">
+                                    <img src="images/xqfx-blank.png" height="258" width="370" alt="" />
+                                </div>-->
+                                 <div class="font-six font-gray" style="width: 390px; margin:  auto; display: none; text-align:center;">
+                                       <img src="img/blank/ct-blank.png" height="258" width="370" alt="" />
+                                               学生还没有错题～
+                                   </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane " ng-class="{'active':vm.tabindex==1}">
+                        <div class="portlet-body">
+                            <div class=" clearfix" >
+                                <div ng-click="openBox($event)" class="cursor font-six float-l" style="padding:15px 0 30px;">选择章节 <img src="img/icon-d.png" alt="Alternate Text" /></div>
+                                <div class="float-r">
+                                    <button class="btn-circle  class-btnblue" style="width:90px;" ng-click="print('gpprint')">打印</button>
+                                </div>
+                                <div class="float-r">
+                                    <button class="btn-circle  class-btnblue" ng-click="downloadClassWrong()">下载（ppt）</button>
+                                </div>
+                                
+                                <ul class="class-check block-graytemplate " ng-if="vm.boxstatus">
+                                    <li>
+                                       
+                                        <div ng-if="!vm.allchecked" ng-click="allChecked()" class="clearfix">
+                                                <div class="float-l check-set">
+                                                     <svg version="1.1" id="Svg4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    style="width: 15px; height: 15px; margin-top: 2px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                    <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                        bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                        bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                        eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                        MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                        dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                        dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                        IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                        ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                        cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                        RD0ieG1wLmlpZDo5QjNDMjA2NDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                        bnRJRD0ieG1wLmRpZDo5QjNDMjA2NTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                        ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNUUyMzM4NjExRTY5QzNG
+                                                        QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNUUzMzM4NjExRTY5
+                                                        QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                        ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BY6V2wAAAHtJREFUeNpiXLVqFRsDA0M3EMcAsRADYfAe
+                                                        iBcDcSkTkOgCYjUg1gFiRiKwNlR9EwuQiIVqfM5AHACpSwLiK0xQpxKrEdkAISYGCsCo5pGj+R0Q
+                                                        S5KoTwKkjwmaQ+ZABYgBMkA8F6QHpLkMiO8A8TUg/k8EvgRVXwsQYACfEB5gLshgigAAAABJRU5E
+                                                        rkJggg==">
+                                                    </image>
+                                                   </svg>
+                                                </div>
+                                                <div class="float-l  line-h">
+                                                    全选
+                                                </div>
+                                            </div>
+                                        
+                                         <div class="md-checkbox clearfix" ng-if="vm.allchecked" ng-if="c.checked" ng-click="allChecked()">
+                                                <div class="float-l  check-set">
+                                                        <svg version="1.1" id="Svg5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	                                                     style="width: 15px; height: 15px; margin-top:2px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                    <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                    bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                    bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                    eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                    MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                    dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                    dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                    IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                    ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                    cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                    RD0ieG1wLmlpZDo5QjEyQzVFMDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                    bnRJRD0ieG1wLmRpZDo5QjEyQzVFMTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                    ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNURFMzM4NjExRTY5QzNG
+                                                    QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNURGMzM4NjExRTY5
+                                                    QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                    ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7GfnjAAAAOhJREFUeNpitF/7k42BgaEbiGOAWIiBMHgP
+                                                    xIuBuJQJSHQBsRoQ6wAxIxFYG6q+iQVIxEI1PmcgDoDUJQHxFSaoU4nViGyAEBOJmnYA8Q8YhxTN
+                                                    U4DYHYh/kqp5AhBnA/ETIOYnRTMoNvKh/pRFlkDX/AeIHyPx20HxCcQvgVgK3VR0zTeAWAaI90Gj
+                                                    owKIXwOxBDYnsaDxQfG9AojDgdgR6kdZXP5hwSIWAcTS0FQkiy8wWHCI2xITBSA/vwNiSRITCygM
+                                                    3jFBc8gcXIGCBYACdC5ID0hzGRDfAeJrQPyfCHwJqr4WIMAAI14wiZLGvXEAAAAASUVORK5CYII=">
+                                                    </image>
+                                                    </svg>
+                                                </div>
+                                                <div class="float-l line-h">
+                                                   全选
+                                                </div>
+                                            </div>
+                                    </li>
+                                    <li ng-repeat="c in vm.charpterlist">
+                                         <div ng-if="!c.checked" ng-click="getCharpters(c,true)" class="clearfix">
+                                                <div class="float-l check-set">
+                                                     <svg version="1.1" id="Svg6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    style="width: 15px; height: 15px; margin-top: 2px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                    <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                        bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                        bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                        eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                        MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                        dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                        dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                        IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                        ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                        cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                        RD0ieG1wLmlpZDo5QjNDMjA2NDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                        bnRJRD0ieG1wLmRpZDo5QjNDMjA2NTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                        ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNUUyMzM4NjExRTY5QzNG
+                                                        QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNUUzMzM4NjExRTY5
+                                                        QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                        ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BY6V2wAAAHtJREFUeNpiXLVqFRsDA0M3EMcAsRADYfAe
+                                                        iBcDcSkTkOgCYjUg1gFiRiKwNlR9EwuQiIVqfM5AHACpSwLiK0xQpxKrEdkAISYGCsCo5pGj+R0Q
+                                                        S5KoTwKkjwmaQ+ZABYgBMkA8F6QHpLkMiO8A8TUg/k8EvgRVXwsQYACfEB5gLshgigAAAABJRU5E
+                                                        rkJggg==">
+                                                    </image>
+                                                   </svg>
+                                                </div>
+                                                <div class="float-l line-h ">
+                                                    <span ng-bind="c.charptername"></span>
+                                                </div>
+                                            </div>
+                                         <div class="md-checkbox clearfix" ng-if="c.checked" ng-click="getCharpters(c,false)" class="clearfix">
+                                                <div class="float-l  check-set">
+                                                        <svg version="1.1" id="Svg7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	                                                     style="width: 15px; height: 15px; margin-top:2px;" viewBox="0 0 15 16" enable-background="new 0 0 15 16" xml:space="preserve">
+                                                    <image overflow="visible" width="15" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+                                                    bWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+                                                    bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+                                                    eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1
+                                                    MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+                                                    dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+                                                    dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAv
+                                                    IiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RS
+                                                    ZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpD
+                                                    cmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJ
+                                                    RD0ieG1wLmlpZDo5QjEyQzVFMDMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSIgeG1wTU06RG9jdW1l
+                                                    bnRJRD0ieG1wLmRpZDo5QjEyQzVFMTMzODYxMUU2OUMzRkFDQzY0NjY0OEU3OSI+IDx4bXBNTTpE
+                                                    ZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlCMTJDNURFMzM4NjExRTY5QzNG
+                                                    QUNDNjQ2NjQ4RTc5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlCMTJDNURGMzM4NjExRTY5
+                                                    QzNGQUNDNjQ2NjQ4RTc5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBt
+                                                    ZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7GfnjAAAAOhJREFUeNpitF/7k42BgaEbiGOAWIiBMHgP
+                                                    xIuBuJQJSHQBsRoQ6wAxIxFYG6q+iQVIxEI1PmcgDoDUJQHxFSaoU4nViGyAEBOJmnYA8Q8YhxTN
+                                                    U4DYHYh/kqp5AhBnA/ETIOYnRTMoNvKh/pRFlkDX/AeIHyPx20HxCcQvgVgK3VR0zTeAWAaI90Gj
+                                                    owKIXwOxBDYnsaDxQfG9AojDgdgR6kdZXP5hwSIWAcTS0FQkiy8wWHCI2xITBSA/vwNiSRITCygM
+                                                    3jFBc8gcXIGCBYACdC5ID0hzGRDfAeJrQPyfCHwJqr4WIMAAI14wiZLGvXEAAAAASUVORK5CYII=">
+                                                    </image>
+                                                    </svg>
+                                                </div>
+                                                <div class="float-l  line-h">
+                                                    <span ng-bind="c.charptername"></span>
+                                                    
+                                                </div>
+                                            </div>
+                                     </li>
+                                    <li>
+                                        <button class="btn-circle btn-blue" ng-click="selectWrong()">确定</button>
+
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="gpprint">
+                                <div class="block-graytemplate i-marginb2 " ng-repeat="c in charpterwrong.wrongdata">
+                                    <div class="selectbook-title">
+                                        <span class="caption" ng-bind="c.charptername">第一章：4556</span>
+                                    </div>
+                                    <ul class="section-list ">
+                                        <li class="clearfix" ng-repeat="w in c.wronglist" style="position: relative;">
+                                            <div class="float-l" style="width: 4%; line-height: 20px;" ng-bind="$index+1">100、</div>
+                                            <div class="section-list1 float-l" custom-mathjax content="w.timuxushu" ng-bind-html="toHtml(w.timuxushu)">
+                                                1.根据从一个方向看到的图形，用给定数量的小正方题摆出性瘾的立体图形用给定时量的小正方题摆出立体图形用给定摆出性瘾的立体图形用给定时量的小正方题摆出立体图形用给定。       
+                                            </div>
+                                            <div class="section-list2">
+                                                <div class="font-six font-red"><span ng-bind="w.wrongnum">90</span>人</div>
+                                                错误人数
+                                            </div>
+                                            <div class="section-list3 ">
+                                                <div class="font-six font-red"><span ng-bind="w.wrongrate">90</span>%</div>
+                                                错误率
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row" style="text-align: right; margin-right: 50px;">
+                                <div set-pagination page-options="gplistOptions" class="pagination"></div>
+                            </div>
+
+                            <div no-data datalist="charpterwrong.wrongdata">
+                                <!--<div style="width: 370px; margin: 0px auto; display: none;">
+                                    <img src="images/xqfx-blank.png" height="258" width="370" alt="" />
+                                </div>-->
+                                <div class="font-six font-gray" style="width: 390px; margin: auto; display: none; text-align:center;">
+                                    <img src="img/blank/ct-blank.png" height="258" width="370" alt="" />
+                                        学生还没有错题～
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+    setMinheight();
+
+</script>

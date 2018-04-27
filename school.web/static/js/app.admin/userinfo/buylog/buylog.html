@@ -1,0 +1,39 @@
+
+<div class="buy-list">
+    <ul class="buy-video">
+        <li ng-repeat="c in vm.livecourselist">
+            <div class="video">
+                <img src="img/zbk/zbk-03.png" alt="Alternate Text" ng-src="{{c.coursepic}}" />
+                <div class="video-on">
+                    <div class="video-time">
+                        <img src="img/zbk/video.png" alt="Alternate Text" ng-click="playvedio(c)" class="cursor" />
+                        <p ng-if="vm.currentdatetime>getTime(c.coursebegintime)"><span ng-bind="getBeginTime(c.coursebegintime)">06/07  19:30~23:10</span>~<span ng-bind="getEndTime(c.courseendtime)"></span> 开播  </p>
+                        <p ng-if="vm.currentdatetime>getTime(c.courseendtime)"> 点击看录播  </p>
+                        <p ng-if="vm.currentdatetime>=getTime(c.courseendtime)&&vm.currentdatetime<=getTime(c.courseendtime)">直播中  </p>
+                    </div>
+                </div>
+            </div>
+             <div style="padding:10px; border:1px solid #e0e0e0;">
+                    <p class="font-six"><span ng-bind="c.coursename">最走心的设计</span></p>
+                    <div class="buytime">
+                        <div class="float-l">购买时间：<span ng-bind="c.coursebuytime">19:30</span></div>
+                        <div class="float-r">已报名：<span ng-bind="c.buycount" class="font-blue">19</span>/ <span>100</span></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="buy-money"><span>¥</span><span ng-bind="c.price">1.00</span></div>
+               </div>
+        </li>
+        <div class="clear"></div>
+    </ul>
+    <!-- 空白页 -->
+     <div no-data datalist="vm.livecourselist">
+        <div class="kby gmjl-blank" style="padding-top:0;">
+        </div>
+         <div style="text-align:center;">
+             没有购买记录，快去购买直播课吧~
+         </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMinheight();
+</script>

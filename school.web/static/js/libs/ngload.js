@@ -1,0 +1,1 @@
+define({load:function(D,F,E){F(["angularAMD",D],function(A,B){A.processQueue();E(B)})}});

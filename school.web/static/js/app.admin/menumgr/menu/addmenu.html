@@ -1,0 +1,173 @@
+﻿<div class="main-content">
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+						</script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="icon-home home-icon"></i>
+                <a href="javascript:void(null)" ui-sref="app">首页</a>
+            </li>
+
+            <li>
+                <a href="javascript:void(null)" ui-sref="app.usermgr">内容管理</a>
+            </li>
+            <li class="active">添加菜单</li>
+        </ul>
+        <!-- .breadcrumb -->
+
+        <div class="nav-search" id="nav-search">
+            <form class="form-search">
+                <span class="input-icon">
+                    <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                    <i class="icon-search nav-search-icon"></i>
+                </span>
+            </form>
+        </div>
+        <!-- #nav-search -->
+    </div>
+    <div class="page-content">
+      
+
+        <div class="row">
+            <div class="col-xs-12">
+              
+                <div class="page-content">
+						
+						<div class="row">
+							<div class="col-xs-12">
+								<form class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-4">父级菜单：</label>
+
+                                        <div class="col-sm-9">
+                                            <select class="col-xs-10 col-sm-5" data-width="125px" ng-model="vm.pmenuinfo" ng-options="v.text for v in vm.parentmenu">
+                                                <!--<option value="">请选择</option>-->
+                                                <option value="">一级菜单</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-4"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 菜单名称：</label>
+
+                                        <div class="col-sm-9">
+                                            <input type="text" id="form-field-1" placeholder="请输入菜单名称" ng-model="vm.menu.name" class="col-xs-10 col-sm-5" />
+                                        </div>
+                                    </div>
+                                    <div class="space-4"></div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 路由： </label>
+
+                                        <div class="col-sm-9">
+                                            <input type="text" id="form-field-2" placeholder="请输入路由" ng-model="vm.menu.urlpath" class="col-xs-10 col-sm-5">
+                                            <span class="help-inline col-xs-12 col-sm-7">
+                                                <!--<label class="middle">
+                                                    <input class="ace" type="checkbox" id="id-disable-check">
+                                                    <span class="lbl"> Disable it!</span>
+                                                </label>-->
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-4"></div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-5">排序：</label>
+
+                                        <div class="col-sm-9">
+                                            <div class="clearfix">
+                                                <input class="col-xs-10 col-sm-5" type="text" id="form-field-5" placeholder="请输入排序" ng-model="vm.menu.orderid" />
+                                            </div>
+
+                                            <div class="space-2"></div>
+
+                                            
+                                        </div>
+                                    </div>
+									<!--<div class="space-4"></div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 图标：</label>
+
+										<div class="col-sm-9">
+											<input type="text" id="form-field-2" placeholder="请输入手机号" ng-model="vm.user.mobile" class="col-xs-10 col-sm-5">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">Inline help text</span>
+											</span>
+										</div>
+									</div>-->
+
+
+                                    <!--<div class="space-4"></div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 是否显示： </label>
+
+                                        <div class="col-sm-9">
+                                            <label>
+                                                <input type="checkbox" class="ace" ng-checked="true">
+                                                <span class="lbl"></span>
+                                            </label>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="space-4"></div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 是否启用： </label>
+
+                                        <div class="col-sm-9">
+                                            <label>
+                                                <input type="checkbox" class="ace">
+                                                <span class="lbl"></span>
+                                            </label>
+                                        </div>
+                                    </div>-->
+
+                                    
+									<div class="space-4"></div>
+
+									
+									<div class="clearfix form-actions">
+										<div class="col-md-offset-3 col-md-9">
+											<button class="btn btn-info" type="button" ng-click="saveMenu()">
+												<i class="icon-ok bigger-110"></i>
+												提交
+											</button>
+
+											&nbsp; &nbsp; &nbsp;
+											<button class="btn" type="reset"  ui-sref="app.menumgr.menu">
+												<i class="icon-undo bigger-110"></i>
+												返回
+											</button>
+										</div>
+									</div>
+
+
+
+								</form>
+
+								
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div>
+
+
+
+
+
+                
+
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+
+</div>
+<!-- /.main-content -->
